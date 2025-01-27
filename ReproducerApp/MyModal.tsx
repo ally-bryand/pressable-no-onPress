@@ -113,7 +113,7 @@ export const MyModal: FC<MyModalProps> = ({onClose, open}) => {
                 onPressIn={() => console.log('Modal Button - onPressIn')}
                 onPressOut={() => console.log('Modal Button - onPressOut')}
                 onPress={onClose}
-                style={{backgroundColor: 'plum', height: 50}}>
+                style={{height: 50, borderWidth: 3, backgroundColor: 'plum'}}>
                 <Text style={{fontSize: 20}}>Close Modal</Text>
               </Pressable>
               <FlatList

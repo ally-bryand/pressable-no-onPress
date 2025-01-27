@@ -24,8 +24,6 @@ function App(): React.JSX.Element {
   const [modalOpen, setModalOpen] = useState(false);
   const [redBackground, setRedBackground] = useState(false);
 
-  console.log(`redBackground: ${redBackground}`);
-
   const textStyles = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(
       progressSV.value,
@@ -34,6 +32,10 @@ function App(): React.JSX.Element {
     ),
     fontSize: 20,
     transform: [{rotate: `${progressSV.value * 180}deg`}],
+  }));
+
+  const text2Styles = useAnimatedStyle(() => ({
+    transform: [{translateX: progressSV.value * 200}],
   }));
 
   const toggleBackgroundColor = () => {
@@ -65,10 +67,7 @@ function App(): React.JSX.Element {
         style={{
           backgroundColor: Colors.lighter,
         }}>
-        <Button
-          onPress={toggleBackgroundColor}
-          title="Toggle background color"
-        />
+        <Button onPress={toggleBackgroundColor} title="Trigger animations" />
         <Button onPress={openModal} title="Toggle Modal" />
         <View
           style={{
@@ -78,6 +77,9 @@ function App(): React.JSX.Element {
             <Animated.Text style={textStyles}>
               My background changes - red or yellow. And I rotate.
             </Animated.Text>
+          </View>
+          <View>
+            <Animated.Text style={text2Styles}>I translate</Animated.Text>
           </View>
         </View>
         <GestureHandlerRootView>
