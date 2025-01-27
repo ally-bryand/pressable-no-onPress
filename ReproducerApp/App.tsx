@@ -9,7 +9,7 @@
 import React, {useState} from 'react';
 import {Button, SafeAreaView, ScrollView, StatusBar, View} from 'react-native';
 
-import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
@@ -33,6 +33,7 @@ function App(): React.JSX.Element {
       ['red', 'yellow'],
     ),
     fontSize: 20,
+    transform: [{rotate: `${progressSV.value * 180}deg`}],
   }));
 
   const toggleBackgroundColor = () => {
@@ -64,22 +65,21 @@ function App(): React.JSX.Element {
         style={{
           backgroundColor: Colors.lighter,
         }}>
-        <Header />
+        <Button
+          onPress={toggleBackgroundColor}
+          title="Toggle background color"
+        />
+        <Button onPress={openModal} title="Toggle Modal" />
         <View
           style={{
             backgroundColor: Colors.white,
           }}>
           <View>
             <Animated.Text style={textStyles}>
-              My background changes - red or yellow
+              My background changes - red or yellow. And I rotate.
             </Animated.Text>
           </View>
         </View>
-        <Button
-          onPress={toggleBackgroundColor}
-          title="Toggle background color"
-        />
-        <Button onPress={openModal} title="Toggle Modal" />
         <GestureHandlerRootView>
           <MyModal onClose={onModalClose} open={modalOpen} />
         </GestureHandlerRootView>
